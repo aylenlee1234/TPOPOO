@@ -13,31 +13,6 @@ public class Jugador {
         this.fallosConsecutivos = 0;
     }
 
-    public boolean jugarTurno(Tablero tablero) {
-        int[] posiciones = elegirDosCartas(tablero);
-        if (posiciones == null) return false;
-
-        System.out.println(nombre + " elige: " + posiciones[0] + " y " + posiciones[1]);
-
-        Carta carta1 = tablero.voltearCarta(posiciones[0]);
-        Carta carta2 = tablero.voltearCarta(posiciones[1]);
-
-        boolean acierto = false;
-        if (carta1 != null && carta2 != null && carta1.coincideCon(carta2)) {
-            carta1.setEmparejada(true);
-            carta2.setEmparejada(true);
-            puntos++;
-            fallosConsecutivos = 0;
-            System.out.println("¡Adivinó!");
-            acierto = true;
-        } else {
-            fallosConsecutivos++;
-            System.out.println("Falló.");
-        }
-
-        return acierto;
-    }
-
     public String getNombre() {
         return nombre;
     }
@@ -50,7 +25,7 @@ public class Jugador {
         return fallosConsecutivos;
     }
 
-    public void reiniciarFallos() {
+    public void reiniciarRacha() {
         fallosConsecutivos = 0;
     }
 
@@ -66,7 +41,7 @@ public class Jugador {
         puntos++;
     }
 
-    public void incrementarFallos() {
+    public void registrarFallos() {
         fallosConsecutivos++;
     }
 

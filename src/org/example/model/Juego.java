@@ -19,7 +19,7 @@ public class Juego {
     }
 
     public void iniciarJuego() {
-        tablero.inicializarCartas(3); // 4 pares = 8 cartas
+        tablero.mezclarCartas(3); // 4 pares = 8 cartas
         System.out.println("¡Empieza el juego!");
     }
 
@@ -33,8 +33,8 @@ public class Juego {
         int pos1 = posiciones[0];
         int pos2 = posiciones[1];
 
-        Carta carta1 = tablero.voltearCarta(pos1);
-        Carta carta2 = tablero.voltearCarta(pos2);
+        Carta carta1 = tablero.revelarCarta(pos1);
+        Carta carta2 = tablero.revelarCarta(pos2);
 
         System.out.println(jugador.getNombre() + " elige posiciones: " + pos1 + " y " + pos2);
         tablero.mostrar(); // Mostrar con cartas visibles
@@ -47,15 +47,15 @@ public class Juego {
         }
 
         boolean acierto = false;
-        if (carta1 != null && carta2 != null && carta1.coincideCon(carta2)) {
+        if (carta1 != null && carta2 != null && tablero.compararCartas(pos1, pos2)) {
             carta1.setEmparejada(true);
             carta2.setEmparejada(true);
             jugador.sumarPunto();
-            jugador.reiniciarFallos();
+            jugador.reiniciarRacha();
             System.out.println("¡Adivino!");
             acierto = true;
         } else {
-            jugador.incrementarFallos();
+            jugador.registrarFallos();
             System.out.println("Las cartas no coinciden.");
         }
 
@@ -66,7 +66,7 @@ public class Juego {
 
         if (jugador.getFallosConsecutivos() >= 3) {
             tablero.reordenar();
-            jugador.reiniciarFallos();
+            jugador.reiniciarRacha();
         }
 
         System.out.println("------------------------");

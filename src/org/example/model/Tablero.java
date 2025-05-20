@@ -11,7 +11,7 @@ public class Tablero {
         cartas = new ArrayList<>();
     }
 
-    public void inicializarCartas(int cantidadPares) {
+    public void mezclarCartas(int cantidadPares) {
         for (int i = 0; i < cantidadPares; i++) {
             cartas.add(new Carta(i));
             cartas.add(new Carta(i));
@@ -19,7 +19,7 @@ public class Tablero {
         Collections.shuffle(cartas);
     }
 
-    public Carta voltearCarta(int posicion) {
+    public Carta revelarCarta(int posicion) {
         if (posicion >= 0 && posicion < cartas.size()) {
             Carta carta = cartas.get(posicion);
             if (!carta.isEmparejada()) {
@@ -39,6 +39,15 @@ public class Tablero {
             }
         }
         return disponibles;
+    }
+
+    public boolean compararCartas(int pos1, int pos2) {
+        if (pos1 >= 0 && pos1 < cartas.size() && pos2 >= 0 && pos2 < cartas.size()) {
+            Carta c1 = cartas.get(pos1);
+            Carta c2 = cartas.get(pos2);
+            return c1.coincideCon(c2);
+        }
+        return false;
     }
 
     public boolean quedanCartas() {
