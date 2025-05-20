@@ -25,6 +25,7 @@ public class JuegoController {
 
             juego.getTablero().ocultarNoEmparejadas();  // Luego se ocultan
             juego.siguienteTurno();
+
         }
 
         juego.finalizarJuego();

@@ -36,7 +36,7 @@ public class Juego {
         Carta carta1 = tablero.voltearCarta(pos1);
         Carta carta2 = tablero.voltearCarta(pos2);
 
-        System.out.println(jugador.getNombre() + " elige: " + pos1 + " y " + pos2);
+        System.out.println(jugador.getNombre() + " elige posiciones: " + pos1 + " y " + pos2);
         tablero.mostrar(); // Mostrar con cartas visibles
 
         // Pausa breve para ver las cartas
@@ -52,11 +52,11 @@ public class Juego {
             carta2.setEmparejada(true);
             jugador.sumarPunto();
             jugador.reiniciarFallos();
-            System.out.println("¡Adivinó!");
+            System.out.println("¡Adivino!");
             acierto = true;
         } else {
             jugador.incrementarFallos();
-            System.out.println("Falló.");
+            System.out.println("Las cartas no coinciden.");
         }
 
         if (!acierto) {
@@ -68,6 +68,8 @@ public class Juego {
             tablero.reordenar();
             jugador.reiniciarFallos();
         }
+
+        System.out.println("------------------------");
     }
 
     public void siguienteTurno() {
@@ -86,6 +88,32 @@ public class Juego {
         System.out.println("Juego finalizado. Puntajes:");
         for (Jugador j : jugadores) {
             System.out.println(j.getNombre() + ": " + j.getPuntos() + " puntos");
+        }
+
+        // Evaluar ganador
+        Jugador ganador = null;
+        boolean empate = false;
+
+        if (jugadores.size() > 1) {
+            int maxPuntos = jugadores.get(0).getPuntos();
+            ganador = jugadores.get(0);
+
+            for (int i = 1; i < jugadores.size(); i++) {
+                Jugador actual = jugadores.get(i);
+                if (actual.getPuntos() > maxPuntos) {
+                    maxPuntos = actual.getPuntos();
+                    ganador = actual;
+                    empate = false;
+                } else if (actual.getPuntos() == maxPuntos) {
+                    empate = true;
+                }
+            }
+        }
+
+        if (ganador == null || empate) {
+            System.out.println("¡Empate!");
+        } else {
+            System.out.println("¡Ganó " + ganador.getNombre() + "!");
         }
     }
 }
