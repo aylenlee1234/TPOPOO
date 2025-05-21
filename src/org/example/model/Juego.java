@@ -55,7 +55,7 @@ public class Juego {
             System.out.println("¡Adivino!");
             acierto = true;
         } else {
-            jugador.registrarFallos();
+            jugador.registrarFallo();
             System.out.println("Las cartas no coinciden.");
         }
 

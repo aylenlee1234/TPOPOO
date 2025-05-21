@@ -1,7 +1,5 @@
 package org.example.model;
 
-import org.example.model.Juego;
-
 public class JuegoController {
     private final Juego juego;
 

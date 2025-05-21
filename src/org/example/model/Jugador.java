@@ -41,7 +41,7 @@ public class Jugador {
         puntos++;
     }
 
-    public void registrarFallos() {
+    public void registrarFallo() {
         fallosConsecutivos++;
     }
 
