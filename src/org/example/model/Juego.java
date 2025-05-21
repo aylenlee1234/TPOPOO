@@ -23,7 +23,7 @@ public class Juego {
         System.out.println("¡Empieza el juego!");
     }
 
-    public void iniciarTurno() {
+    public void jugarTurno() {
         Jugador jugador = jugadores.get(turnoActual);
         tablero.mostrar(); // Mostrar antes de elegir
 

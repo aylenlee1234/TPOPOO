@@ -13,7 +13,7 @@ public class JuegoController {
         juego.iniciarJuego();
 
         while (!juego.termino()) {
-            juego.iniciarTurno();
+            juego.jugarTurno();
             juego.siguienteTurno();
         }
 
