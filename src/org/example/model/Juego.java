@@ -23,7 +23,7 @@ public class Juego {
         System.out.println("¡Empieza el juego!");
     }
 
-    public void iniciarTurno() {
+    public void jugarTurno() {
         Jugador jugador = jugadores.get(turnoActual);
         tablero.mostrar(); // Mostrar antes de elegir
 
@@ -113,7 +113,7 @@ public class Juego {
         if (ganador == null || empate) {
             System.out.println("¡Empate!");
         } else {
-            System.out.println("¡Ganó " + ganador.getNombre() + "!");
+            System.out.println("¡Gano " + ganador.getNombre() + "!");
         }
     }
 }

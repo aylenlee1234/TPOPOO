@@ -27,7 +27,7 @@ public class Tablero {
                 return carta;
             }
         }
-        System.out.println("Posición inválida o carta ya emparejada.");
+        System.out.println("Posicion invalida o carta ya emparejada.");
         return null;
     }
 
